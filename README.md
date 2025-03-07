@@ -1,1 +1,1 @@
-# custom-lavega
+# Modulos custom para Congelados La Vega
