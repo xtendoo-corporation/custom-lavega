@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
     <record id="account_invoices_copy" model="ir.actions.report">
@@ -32,9 +31,9 @@
     </template>
 
     <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='due_date']" position="replace"/>
         <xpath expr="//div[@name='comment']" position="after">
             <t t-if="is_copy == 1">
-            <!-- Add watermark code here -->
                 <div class="row" t-if="report_type == 'pdf'"
                      style="height:0px; text-align:center; width:100%; margin-left:10%; margin-right:10%; margin-top:10%;">
                     <div class="col-6" name="watermark">
@@ -44,8 +43,8 @@
                     </div>
                 </div>
             </t>
-            <!-- End of watermark code snippet -->
         </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="replace"/>
     </template>
 
 </odoo>
