@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="account_invoices_copy" model="ir.actions.report">
+        <field name="name">Facturas con Copia</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">lavega_document_format.report_invoice_copy</field>
+        <field name="report_file">lavega_document_format.report_invoice_copy</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_invoice_copy">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-set="is_copy" t-value="0"/>
+                <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                   t-call="account.report_invoice_document"
+                   t-lang="lang"/>
+
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-set="is_copy" t-value="1"/>
+                <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                   t-call="account.report_invoice_document"
+                   t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='comment']" position="after">
+            <t t-if="is_copy == 1">
+            <!-- Add watermark code here -->
+                <div class="row" t-if="report_type == 'pdf'"
+                     style="height:0px; text-align:center; width:100%; margin-left:10%; margin-right:10%; margin-top:10%;">
+                    <div class="col-6" name="watermark">
+                        <span style="color:gray; font-size:8em; text-align:center; position:absolute; opacity:0.2;">
+                            ES COPIA
+                        </span>
+                    </div>
+                </div>
+            </t>
+            <!-- End of watermark code snippet -->
+        </xpath>
+    </template>
+
+</odoo>
