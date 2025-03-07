@@ -32,6 +32,9 @@
 
     <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
         <xpath expr="//div[@name='due_date']" position="replace"/>
+        <xpath expr="//div[@name='delivery_date']" position="replace"/>
+        <xpath expr="//div[@name='origin']" position="replace"/>
+
         <xpath expr="//div[@name='comment']" position="after">
             <t t-if="is_copy == 1">
                 <div class="row" t-if="report_type == 'pdf'"
