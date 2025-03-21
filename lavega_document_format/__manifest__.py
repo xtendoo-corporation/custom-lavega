@@ -13,6 +13,7 @@
     ],
     "data": [
         "views/invoice/report_invoice_document.xml",
+        "views/report_invoice_logofix.xml",
     ],
     "installable": True,
     'application': False,

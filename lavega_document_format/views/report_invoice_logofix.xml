@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="external_layout_folder_logofix" inherit_id="web.external_layout_folder">
+        <xpath expr="//img[@class='o_company_logo_big mb-2']" position="replace">
+            <img t-if="company.logo" class="" t-att-src="image_data_uri(company.logo)" alt="Logo" style="width: 320px;"/>
+        </xpath>
+    </template>
+</odoo>
