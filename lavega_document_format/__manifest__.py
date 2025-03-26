@@ -14,6 +14,7 @@
     "data": [
         "views/invoice/report_invoice_document.xml",
         "views/report_invoice_logofix.xml",
+        "views/report_invoice_debt_eraser.xml",
     ],
     "installable": True,
     'application': False,

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_debt_eraser" inherit_id="account.report_invoice_document">
+        <!-- Remove only the payment information and amount due lines -->
+        <xpath expr="//t[@t-if='print_with_payments']" position="replace">
+            <!-- Empty replacement to remove paid date and amount due information -->
+        </xpath>
+
+        <!-- Keep the rest of the template intact -->
+    </template>
+</odoo>
