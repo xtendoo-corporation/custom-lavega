@@ -6,6 +6,11 @@
             <!-- Empty replacement to remove paid date and amount due information -->
         </xpath>
 
+        <!-- Align invoice date to the right to optimize space -->
+        <xpath expr="//div[@name='invoice_date']" position="attributes">
+            <attribute name="class">col ms-auto text-end</attribute>
+        </xpath>
+
         <!-- Keep the rest of the template intact -->
     </template>
 </odoo>
