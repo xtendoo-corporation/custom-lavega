@@ -37,7 +37,7 @@
 
         <!-- Reemplazar la primera fila que contiene la dirección del cliente -->
         <xpath expr="//div[@class='row'][1]" position="replace">
-            <div class="row">
+            <div class="row mb-4" style="margin-bottom: 2rem !important;">
                 <!-- Columna izquierda: Título de la factura y fecha -->
                 <div class="col-6 text-start">
                     <h2 class="mt-0 mb-2" style="margin-top: 0 !important;">

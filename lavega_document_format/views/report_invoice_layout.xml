@@ -5,7 +5,7 @@
 
         <!-- Replace the invoice header section to create a two-column layout -->
         <xpath expr="//div[@name='invoice_date']/.." position="replace">
-            <div class="row mb-3">
+            <div class="row mb-4" style="margin-bottom: 2rem !important;">
                 <!-- Left side: Invoice type title, reference and date -->
                 <div class="col-6">
                     <h2 class="mb-2">
