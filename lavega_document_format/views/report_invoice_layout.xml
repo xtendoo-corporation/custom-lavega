@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template to align invoice date and title on the left with customer info on the right -->
+    <template id="report_invoice_document_layout" inherit_id="account.report_invoice_document">
+
+        <!-- Replace the invoice header section to create a two-column layout -->
+        <xpath expr="//div[@name='invoice_date']/.." position="replace">
+            <div class="row mb-3">
+                <!-- Left side: Invoice type title, reference and date -->
+                <div class="col-6">
+                    <h2 class="mb-2">
+                        <t t-if="o.move_type == 'out_invoice'">
+                            <t t-if="o.state == 'draft'">PROFORMA FACTURA</t>
+                            <t t-elif="o.state == 'posted'">FACTURA</t>
+                        </t>
+                    </h2>
+                    <div name="invoice_ref" class="mb-2">
+                        <span t-field="o.name"/>
+                    </div>
+                    <div name="invoice_date" class="mt-2">
+                        <strong>Fecha:</strong>
+                        <span t-field="o.invoice_date" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+                <!-- Right side: Customer info (will be positioned via CSS) -->
+                <div class="col-6 text-end">
+                    <div name="customer_info">
+                        <div t-if="o.partner_id">
+                            <strong t-field="o.partner_id.name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>
